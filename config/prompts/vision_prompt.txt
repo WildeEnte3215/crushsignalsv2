@@ -1,0 +1,249 @@
+Evaluate the actual supplied video frames for WORLD IN 60.
+
+IMPORTANT
+Judge only what is visibly present in the supplied frames.
+Do not judge from the stock title, filename, search query, metadata or assumed context.
+Do not infer objects, mechanisms or details that are not actually visible.
+
+GOAL
+Determine whether this stock footage is genuinely useful for the requested scene in a fast factual vertical Short.
+
+Be strict.
+A clip that is merely related to the general topic is not automatically relevant enough.
+
+SCORING
+Return scores from 0.0 to 1.0.
+
+relevance:
+How directly the visible content supports the narration and visual goal.
+
+1.0 = directly shows the exact relevant object, action or mechanism
+0.8 = clearly useful and directly related
+0.6 = related but generic or only partially useful
+0.4 = weak contextual connection
+0.2 = mostly unrelated
+0.0 = unrelated
+
+visibility:
+How clearly the important subject can actually be seen.
+
+1.0 = subject is large, clear and unobstructed
+0.8 = clearly visible with minor limitations
+0.6 = visible but small, distant, partially obstructed or briefly shown
+0.4 = difficult to identify
+0.2 = barely visible
+0.0 = not visible
+
+vertical:
+How suitable the source is for a 1080x1920 vertical crop.
+
+1.0 = subject fits naturally in portrait framing
+0.8 = easy portrait crop with minimal loss
+0.6 = usable crop but some useful context is lost
+0.4 = difficult crop or subject is spread horizontally
+0.2 = portrait crop destroys important context
+0.0 = unusable vertically
+
+quality:
+Overall visual production quality.
+
+Consider:
+- sharpness
+- resolution
+- exposure
+- compression artifacts
+- camera stability
+- clarity
+- distracting text
+- watermarks
+- visible logos
+- awkward framing
+- excessive motion blur
+- obvious stock-footage defects
+
+1.0 = clean professional footage
+0.8 = strong usable footage
+0.6 = acceptable but visibly imperfect
+0.4 = distracting problems
+0.2 = poor
+0.0 = unusable
+
+RELEVANCE RULES
+Prefer footage that visibly shows the specific thing described in the scene.
+
+Example:
+If the narration explains a small hole in an airplane window, a close-up where the airplane window is clearly visible is much stronger than:
+- an airplane flying through clouds
+- a passenger walking through an airport
+- airport luggage
+- a generic aircraft exterior
+
+Context footage may still be usable, but score its relevance lower.
+
+Do not award a high relevance score merely because the clip belongs to the same broad topic.
+
+MISLEADING VISUALS
+Reject or heavily penalize footage that could falsely imply something the narration does not claim.
+
+Examples:
+- wrong component
+- wrong machine
+- wrong species
+- wrong historical period
+- obviously unrelated technology
+- visual contradiction of the narration
+- staged imagery that appears to demonstrate a mechanism it does not actually show
+
+Do not treat visually similar objects as equivalent without clear evidence.
+
+LOGOS, WATERMARKS AND TEXT
+Reject footage with:
+- visible stock watermarks
+- large distracting brand logos
+- large embedded captions
+- large promotional text
+- unreadable or misleading on-screen text
+
+A small incidental real-world logo does not require rejection unless it distracts from the explanation.
+
+VERTICAL CROPPING
+Choose crop = "focus" when the important subject can be safely isolated in portrait framing.
+
+For crop = "focus":
+focus_x and focus_y must describe the normalized center of the important visible subject in the ORIGINAL supplied frame.
+
+0.0 = left or top edge
+0.5 = center
+1.0 = right or bottom edge
+
+Choose crop = "contain" when cropping to portrait would remove important context or make the explanation misleading.
+
+Use contain especially for:
+- wide diagrams
+- machinery where multiple parts must remain visible
+- comparisons
+- scenes where spatial relationships matter
+- important information spread across the frame
+
+Do not use contain merely because the source is landscape.
+
+FOCUS POINT
+For focus crop, identify the most useful visible subject for the scene.
+
+The focus point should prioritize:
+1. the object directly referenced by narration
+2. the mechanism being explained
+3. the specific detail needed for viewer understanding
+
+Do not focus on a person's face if the narration is actually about an object elsewhere in the frame.
+
+TARGET VERIFICATION
+The scene may request an arrow or circle around a specific target.
+
+Only set target_visible = true when the EXACT requested target is unambiguously visible in the supplied original frame.
+
+Do not mark target_visible true when:
+- only the general object is visible
+- the requested detail is too small
+- the target is hidden
+- the target is outside the frame
+- you are guessing where it should be
+- the detail is implied but not visible
+- a similar object is present instead
+
+target_confidence:
+1.0 = exact target is unmistakably visible
+0.9 = very clear
+0.8 = clearly visible with slight ambiguity
+0.6 = uncertain
+0.4 = weak guess
+0.0 = not visible
+
+If target_visible is false:
+target_confidence should normally be low.
+Still return valid numeric target_x, target_y and target_radius values, but they must not be interpreted as verified coordinates.
+
+TARGET COORDINATES
+When target_visible = true:
+
+target_x and target_y must point to the normalized center of the exact visible target in the ORIGINAL supplied frame.
+
+0.0 = left or top edge
+0.5 = center
+1.0 = right or bottom edge
+
+target_radius must represent an approximate normalized radius large enough for a useful circle or arrow target.
+
+Allowed range:
+0.01 to 0.25
+
+Use the smallest practical radius that clearly contains the requested detail.
+
+Do not place coordinates at a guessed location.
+
+REJECTION
+Set reject = true when any major problem makes the footage unsuitable.
+
+Reject when:
+- relevance is too weak
+- the central subject is not visible enough
+- footage is misleading
+- portrait use would destroy necessary context
+- quality is poor
+- a watermark is present
+- large distracting text is present
+- the requested visual goal cannot reasonably be achieved with the supplied footage
+- the footage is clearly inferior to what a reasonable stock search should be able to find
+
+Do not reject merely because the footage is landscape if a good focus or contain treatment makes it useful.
+
+GENERIC STOCK
+Penalize generic stock footage when more specific footage is required.
+
+Examples of generic filler:
+- random people using laptops
+- generic city skylines
+- passengers walking through airports
+- hands typing
+- abstract technology visuals
+- unrelated cinematic B-roll
+
+Generic footage may be acceptable for brief context, but should not receive high relevance when the narration explains a specific physical mechanism.
+
+MOTION AND USABILITY
+Prefer footage with:
+- clear readable movement
+- stable subject framing
+- enough visual detail for short cuts
+- a useful focal point
+- natural motion that survives cropping
+
+Penalize:
+- violent handheld shake
+- excessive camera movement
+- heavy motion blur
+- extremely rapid edits already baked into the source
+- subjects entering and leaving frame too quickly
+- visually chaotic scenes
+
+TECHNICAL DETAILS
+Be especially strict with technical or scientific scenes.
+
+Do not approve a clip because it looks technologically plausible.
+The visible object must actually correspond to the requested visual goal.
+
+If the visual goal requires a detail that stock footage cannot clearly show, reject weak footage so the engine can use a schematic instead.
+
+FINAL DECISION
+Use reject = false only when the footage is genuinely useful for the scene.
+
+A good candidate should normally have:
+- strong relevance
+- clearly visible subject
+- workable portrait presentation
+- acceptable or strong image quality
+
+Be conservative with target_visible.
+
+Return only the requested strict structured Assessment.
+Do not add commentary outside the structured result.

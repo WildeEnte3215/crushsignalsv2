@@ -1,0 +1,56 @@
+{
+  "ai_provider": "openai",
+
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+
+  "min_duration": 30,
+  "max_duration": 50,
+  "target_words": 95,
+
+  "max_shot_seconds": 4.0,
+
+  "crf": 20,
+  "preset": "fast",
+  "threads": 2,
+
+"research_model": "gpt-5.6-luna",
+"vision_model": "gpt-5.6-luna",
+
+  "tts_model": "eleven_multilingual_v2",
+  "sfx_model": "eleven_text_to_sound_v2",
+
+  "voice_speed": 1.05,
+
+  "stock_candidates": 6,
+  "query_attempts": 3,
+
+  "min_visual_score": 0.65,
+  "max_diagram_fraction": 0.5,
+
+  "sfx_enabled": true,
+  "sfx_gap_seconds": 6,
+  "max_sfx": 4,
+  "sfx_volume": 0.16,
+
+  "final_vision_review": false,
+
+  "run_budget_usd": 2.0,
+  "monthly_budget_usd": 100.0,
+
+  "rates": {
+    "gpt-5.6-luna": [0.2, 1.2]
+  },
+
+  "tts_usd_per_1000_chars": 0.10,
+  "sfx_usd_per_second": 0.002,
+
+  "subtitles": {
+    "font_size": 76,
+    "words_per_chunk": 3,
+    "x": 0.50,
+    "y": 0.70,
+    "highlight": true
+  }
+}

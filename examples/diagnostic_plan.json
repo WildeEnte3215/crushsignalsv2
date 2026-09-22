@@ -1,0 +1,158 @@
+{
+  "topic": "Offline diagnostic",
+  "hook": "Why do airplane windows have tiny holes? This is our production engine test.",
+  "title": "World in 60 — engine diagnostic",
+  "description": "Original synthetic assets and local test voice. No real API calls.",
+  "scenes": [
+    {
+      "id": "s00",
+      "narration": "Why do airplane windows have tiny holes? This is our production engine test.",
+      "claim_ids": [
+        "fixture"
+      ],
+      "visual_goal": "Offline synthetic window illustration",
+      "search_queries": [
+        "airplane window"
+      ],
+      "diagram_nodes": [
+        "RESEARCH",
+        "EXPLAIN",
+        "VERIFY"
+      ],
+      "prefer_diagram": false,
+      "edit": {
+        "motion": "zoom_in",
+        "transition": "cut",
+        "overlay": "label",
+        "label": "OFFLINE RENDER TEST",
+        "target": "small black diagnostic dot",
+        "sfx": "whoosh"
+      }
+    },
+    {
+      "id": "s01",
+      "narration": "Real episodes begin with research. Every explanation needs credible sources and a separate fact check.",
+      "claim_ids": [
+        "fixture"
+      ],
+      "visual_goal": "Offline synthetic window illustration",
+      "search_queries": [
+        "airplane window"
+      ],
+      "diagram_nodes": [
+        "RESEARCH",
+        "EXPLAIN",
+        "VERIFY"
+      ],
+      "prefer_diagram": false,
+      "edit": {
+        "motion": "pan_right",
+        "transition": "fade",
+        "overlay": "label",
+        "label": "SOURCES FIRST",
+        "target": "small black diagnostic dot",
+        "sfx": "click"
+      }
+    },
+    {
+      "id": "s02",
+      "narration": "The engine compares actual video frames, then chooses footage that fits the explanation.",
+      "claim_ids": [
+        "fixture"
+      ],
+      "visual_goal": "Offline synthetic window illustration",
+      "search_queries": [
+        "airplane window"
+      ],
+      "diagram_nodes": [
+        "RESEARCH",
+        "EXPLAIN",
+        "VERIFY"
+      ],
+      "prefer_diagram": false,
+      "edit": {
+        "motion": "punch",
+        "transition": "cut",
+        "overlay": "arrow",
+        "label": "FRAME SELECTION",
+        "target": "small black diagnostic dot",
+        "sfx": "whoosh"
+      }
+    },
+    {
+      "id": "s03",
+      "narration": "Narration timestamps control each subtitle. Short shots add movement without losing the subject.",
+      "claim_ids": [
+        "fixture"
+      ],
+      "visual_goal": "Offline synthetic window illustration",
+      "search_queries": [
+        "airplane window"
+      ],
+      "diagram_nodes": [
+        "RESEARCH",
+        "EXPLAIN",
+        "VERIFY"
+      ],
+      "prefer_diagram": false,
+      "edit": {
+        "motion": "zoom_out",
+        "transition": "dip_black",
+        "overlay": "label",
+        "label": "WORD TIMING",
+        "target": "small black diagnostic dot",
+        "sfx": "click"
+      }
+    },
+    {
+      "id": "s04",
+      "narration": "A marker appears only when its target is visible. Sound effects stay subtle.",
+      "claim_ids": [
+        "fixture"
+      ],
+      "visual_goal": "Offline synthetic window illustration",
+      "search_queries": [
+        "airplane window"
+      ],
+      "diagram_nodes": [
+        "RESEARCH",
+        "EXPLAIN",
+        "VERIFY"
+      ],
+      "prefer_diagram": false,
+      "edit": {
+        "motion": "freeze",
+        "transition": "cut",
+        "overlay": "circle",
+        "label": "VERIFIED TARGET",
+        "target": "small black diagnostic dot",
+        "sfx": "whoosh"
+      }
+    },
+    {
+      "id": "s05",
+      "narration": "Finally, a simple diagram connects the steps. The finished file passes technical checks before export.",
+      "claim_ids": [
+        "fixture"
+      ],
+      "visual_goal": "Offline synthetic window illustration",
+      "search_queries": [
+        "airplane window"
+      ],
+      "diagram_nodes": [
+        "RESEARCH",
+        "EXPLAIN",
+        "VERIFY"
+      ],
+      "prefer_diagram": true,
+      "edit": {
+        "motion": "none",
+        "transition": "cut",
+        "overlay": "label",
+        "label": "HOW IT WORKS",
+        "target": "small black diagnostic dot",
+        "sfx": "click"
+      }
+    }
+  ]
+}

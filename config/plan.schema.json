@@ -1,0 +1,172 @@
+{
+  "$defs": {
+    "Edit": {
+      "additionalProperties": false,
+      "properties": {
+        "motion": {
+          "enum": [
+            "zoom_in",
+            "zoom_out",
+            "pan_left",
+            "pan_right",
+            "punch",
+            "freeze",
+            "none"
+          ],
+          "title": "Motion",
+          "type": "string"
+        },
+        "transition": {
+          "enum": [
+            "cut",
+            "fade",
+            "dip_black"
+          ],
+          "title": "Transition",
+          "type": "string"
+        },
+        "overlay": {
+          "enum": [
+            "none",
+            "label",
+            "arrow",
+            "circle"
+          ],
+          "title": "Overlay",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 32,
+          "title": "Label",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "sfx": {
+          "enum": [
+            "none",
+            "whoosh",
+            "click",
+            "pop",
+            "impact",
+            "riser"
+          ],
+          "title": "Sfx",
+          "type": "string"
+        }
+      },
+      "required": [
+        "motion",
+        "transition",
+        "overlay",
+        "label",
+        "target",
+        "sfx"
+      ],
+      "title": "Edit",
+      "type": "object"
+    },
+    "Scene": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_]{0,30}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "narration": {
+          "title": "Narration",
+          "type": "string"
+        },
+        "claim_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Claim Ids",
+          "type": "array"
+        },
+        "visual_goal": {
+          "title": "Visual Goal",
+          "type": "string"
+        },
+        "search_queries": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Search Queries",
+          "type": "array"
+        },
+        "diagram_nodes": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "title": "Diagram Nodes",
+          "type": "array"
+        },
+        "prefer_diagram": {
+          "title": "Prefer Diagram",
+          "type": "boolean"
+        },
+        "edit": {
+          "$ref": "#/$defs/Edit"
+        }
+      },
+      "required": [
+        "id",
+        "narration",
+        "claim_ids",
+        "visual_goal",
+        "search_queries",
+        "diagram_nodes",
+        "prefer_diagram",
+        "edit"
+      ],
+      "title": "Scene",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "topic": {
+      "title": "Topic",
+      "type": "string"
+    },
+    "hook": {
+      "title": "Hook",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 90,
+      "title": "Title",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "scenes": {
+      "items": {
+        "$ref": "#/$defs/Scene"
+      },
+      "maxItems": 9,
+      "minItems": 4,
+      "title": "Scenes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "topic",
+    "hook",
+    "title",
+    "description",
+    "scenes"
+  ],
+  "title": "Plan",
+  "type": "object"
+}

@@ -1,0 +1,36 @@
+{
+  "checks": {
+    "dimensions": true,
+    "h264": true,
+    "aac": true,
+    "pixel_format": true,
+    "fps": true,
+    "duration_target": true,
+    "duration_timeline": true,
+    "video_stream_duration": true,
+    "audio_stream_duration": true,
+    "encoded_frame_count": true,
+    "frame_coverage": true,
+    "short_shots": true,
+    "full_decode": true,
+    "no_long_black": true,
+    "no_long_silence": true,
+    "loudness": true,
+    "true_peak": true
+  },
+  "duration": 40.0,
+  "loudness": {
+    "input_i": "-16.49",
+    "input_tp": "-5.97",
+    "input_lra": "2.30",
+    "input_thresh": "-26.51",
+    "output_i": "-16.28",
+    "output_tp": "-5.94",
+    "output_lra": "1.90",
+    "output_thresh": "-26.30",
+    "normalization_type": "dynamic",
+    "target_offset": "0.28"
+  },
+  "vision_review": "not requested or offline diagnostic",
+  "passed": true
+}

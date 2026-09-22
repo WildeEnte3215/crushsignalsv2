@@ -1,0 +1,41 @@
+.env
+.venv/
+.cache/
+__pycache__/
+output/*
+!output/.gitkeep
+setup_report.json
+.run.lock
+
+# Secrets
+.env
+*.env
+config/youtube_token.json
+config/youtube_oauth_client.json
+*token*
+*secret*
+*credential*
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Generated/cache
+.cache/
+output/
+relationship_render_work/
+
+# Locks
+*.lock
+
+# Large/generated media
+*.mp4
+*.mov
+*.wav
+
+# Windows
+Thumbs.db
+desktop.ini

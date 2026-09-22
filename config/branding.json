@@ -1,0 +1,27 @@
+{
+  "channel_name": "WORLD IN 60",
+  "tagline": "The world explained in 60 seconds.",
+
+  "intro_enabled": true,
+  "intro_spoken": true,
+  "intro_text": "The world explained in 60 seconds.",
+
+  "intro_duration": 1.8,
+  "animation_seconds": 0.55,
+
+  "subscribe_animation": true,
+  "subscribe_text": "SUBSCRIBE",
+  "subscribe_start": 0.15,
+  "subscribe_duration": 1.45,
+
+  "intro_sfx": "whoosh",
+
+  "background": "#09182B",
+  "accent": "#6FF3CC",
+  "text_color": "#FFFFFF",
+
+  "font_path": "assets/fonts/DejaVuSans-Bold.ttf",
+  "font_name": "DejaVu Sans",
+
+  "footer_text": ""
+}
